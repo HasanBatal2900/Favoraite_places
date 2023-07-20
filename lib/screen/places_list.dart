@@ -1,5 +1,5 @@
-import 'package:favoriate_places/constraints.dart/pageBuilder.dart';
 import 'package:favoriate_places/provider/favoraite_provider.dart';
+import 'package:favoriate_places/screen/new_place.dart';
 import 'package:favoriate_places/widgets/Places_listview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -17,7 +17,19 @@ class PlacesListScreen extends ConsumerWidget {
         actions: [
           IconButton(
             onPressed: () {
-              Navigator.push(context, newPageBuilder);
+              Navigator.push(context, PageRouteBuilder(
+  transitionDuration: const Duration(milliseconds: 500),
+  transitionsBuilder: (context, animation, secondaryAnimation, child) {
+    animation = CurvedAnimation(parent: animation, curve: Curves.easeInQuint);
+    return ScaleTransition(
+      scale: animation,
+      child: child,
+    );
+  },
+  pageBuilder: (context, animation, secondaryAnimation) {
+    return const NewPlace();
+  },
+));
             },
             icon: const Icon(
               Icons.add,
