@@ -20,9 +20,24 @@ class PlacesList extends StatelessWidget {
             itemCount: places.length,
             itemBuilder: (context, index) {
               return ListTile(
+                enableFeedback: true,
+                subtitle: Text(
+                  places[index].placeAddrees.city +
+                      " || " +
+                      places[index].placeAddrees.countryName +
+                      " || " +
+                      places[index].placeAddrees.continent,
+                  textAlign: TextAlign.justify,
+                  style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                      color: Theme.of(context).colorScheme.primary,
+                      fontSize: 14),
+                ),
                 leading: CircleAvatar(
                   radius: 30,
-                  backgroundImage: FileImage(places[index].image, scale: 1),
+                  backgroundImage: FileImage(
+                    places[index].image,
+                    scale: 1,
+                  ),
                 ),
                 onTap: () {
                   Navigator.push(

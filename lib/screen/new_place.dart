@@ -43,15 +43,15 @@ class _NewPlaceState extends ConsumerState<NewPlace> {
           isSaving = true;
         });
 
+        ref.read(favoriateProvider.notifier).addPlace(Place(
+            name: enteredPlace,
+            image: _selectedImage!,
+            placeAddrees: _fullPlaceAddrees!));
         await Future.delayed(const Duration(milliseconds: 700), () {
           setState(() {
             isSaving = false;
           });
         });
-        ref.read(favoriateProvider.notifier).addPlace(Place(
-            name: enteredPlace,
-            image: _selectedImage!,
-            placeAddrees: _fullPlaceAddrees!));
 
         if (!mounted) {
           return;
