@@ -53,6 +53,10 @@ class _LocationInputState extends State<LocationInput> {
     locationData = await location.getLocation();
     long = locationData.longitude;
     lat = locationData.latitude;
+
+    if (lat == null || long == null) {
+      return;
+    }
     print(locationData.longitude);
     print(locationData.latitude);
 
@@ -67,7 +71,11 @@ class _LocationInputState extends State<LocationInput> {
     final countryName = data["countryName"];
 
     pickedLocation = PlaceAddrees(
-        city: cityName, continent: continent, countryName: countryName);
+        city: cityName,
+        continent: continent,
+        countryName: countryName,
+        lat: lat!,
+        long: long!);
 
     widget.onSelectedFullAddrees(pickedLocation!);
     log(pickedLocation!.city);
