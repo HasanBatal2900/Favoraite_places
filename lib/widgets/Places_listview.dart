@@ -28,7 +28,7 @@ class PlacesList extends StatelessWidget {
                       " || " +
                       places[index].placeAddrees.continent,
                   textAlign: TextAlign.justify,
-                  style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                  style: Theme.of(context).textTheme.titleSmall!.copyWith(
                       color: Theme.of(context).colorScheme.primary,
                       fontSize: 14),
                 ),
