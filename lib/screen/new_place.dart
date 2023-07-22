@@ -2,7 +2,9 @@ import 'dart:developer';
 import 'dart:io';
 
 import 'package:favoriate_places/models/place.dart';
+import 'package:favoriate_places/models/place_addrees.dart';
 import 'package:favoriate_places/provider/favoraite_provider.dart';
+import 'package:favoriate_places/widgets/location_input.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -28,6 +30,7 @@ class _NewPlaceState extends ConsumerState<NewPlace> {
   }
 
   File? _selectedImage;
+  PlaceAddrees? _fullPlaceAddrees;
   @override
   Widget build(BuildContext context) {
     var formkey = GlobalKey<FormState>();
@@ -45,9 +48,10 @@ class _NewPlaceState extends ConsumerState<NewPlace> {
             isSaving = false;
           });
         });
-        ref
-            .read(favoriateProvider.notifier)
-            .addPlace(Place(name: enteredPlace, image: _selectedImage!));
+        ref.read(favoriateProvider.notifier).addPlace(Place(
+            name: enteredPlace,
+            image: _selectedImage!,
+            placeAddrees: _fullPlaceAddrees!));
 
         if (!mounted) {
           return;
@@ -103,6 +107,12 @@ class _NewPlaceState extends ConsumerState<NewPlace> {
                 ),
                 const SizedBox(
                   height: 16,
+                ),
+                LocationInput(onSelectedFullAddrees: (placeAddress) {
+                  _fullPlaceAddrees = placeAddress;
+                }),
+                const SizedBox(
+                  height: 10,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
