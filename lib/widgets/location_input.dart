@@ -24,6 +24,7 @@ double? lat;
 bool showMap = false;
 
 class _LocationInputState extends State<LocationInput> {
+
   void getCurrentLocation() async {
     Location location = Location();
 
@@ -69,13 +70,15 @@ class _LocationInputState extends State<LocationInput> {
     final cityName = data["city"];
     final continent = data["continent"];
     final countryName = data["countryName"];
+  
 
     pickedLocation = PlaceAddrees(
         city: cityName,
         continent: continent,
         countryName: countryName,
         lat: lat!,
-        long: long!);
+        long: long!,
+      );
 
     widget.onSelectedFullAddrees(pickedLocation!);
     log(pickedLocation!.city);
@@ -133,6 +136,7 @@ class _LocationInputState extends State<LocationInput> {
               ),
             ],
           ),
+          //"staticmap.php?center=40.714728,-73.998672&zoom=14&size=865x512&maptype=mapnik"
           CircleLayer(
             circles: [
               CircleMarker(
@@ -191,7 +195,7 @@ class _LocationInputState extends State<LocationInput> {
               ),
             ),
           ],
-        )
+        ),
       ],
     );
   }

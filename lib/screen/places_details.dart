@@ -25,19 +25,29 @@ class PlaceDetailsScreen extends StatelessWidget {
           ),
         ),
         Positioned(
-          left: 40,
-          bottom: 80,
+          left: 30,
+          bottom: 60,
           child: Text(
             place.placeAddrees.city +
                 " || " +
                 place.placeAddrees.countryName +
                 " || " +
                 place.placeAddrees.continent,
+            overflow: TextOverflow.ellipsis,
             textAlign: TextAlign.justify,
-            style: Theme.of(context).textTheme.titleSmall!.copyWith(
-                color: Theme.of(context).colorScheme.primary, fontSize: 14),
+            style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                  color: Theme.of(context).colorScheme.primary,
+                ),
           ),
         ),
+        Positioned(
+          left: 0,
+          right: 0,
+          child: CircleAvatar(
+            radius: 70,
+            backgroundColor: Colors.deepPurple.shade100,
+          ),
+        )
       ]),
     );
   }
