@@ -12,11 +12,31 @@ class PlaceDetailsScreen extends StatelessWidget {
         title: Text(place.name),
       ),
       body: Stack(children: [
-        Image.file(
-          place.image,
-          height: 400,
-          width: double.infinity,
-          fit: BoxFit.cover,
+        Positioned(
+          left: 0,
+          right: 0,
+          top: 0,
+          bottom: 0,
+          child: Image.file(
+            place.image,
+            height: double.infinity,
+            width: double.infinity,
+            fit: BoxFit.cover,
+          ),
+        ),
+        Positioned(
+          left: 40,
+          bottom: 80,
+          child: Text(
+            place.placeAddrees.city +
+                " || " +
+                place.placeAddrees.countryName +
+                " || " +
+                place.placeAddrees.continent,
+            textAlign: TextAlign.justify,
+            style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                color: Theme.of(context).colorScheme.primary, fontSize: 14),
+          ),
         ),
       ]),
     );

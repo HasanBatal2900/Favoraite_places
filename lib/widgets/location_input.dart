@@ -175,17 +175,20 @@ class _LocationInputState extends State<LocationInput> {
           height: 10,
         ),
         Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             TextButton.icon(
               onPressed: getCurrentLocation,
               icon: const Icon(Icons.location_on),
-              label: const Text("Get current Location"),
+              label: const Text("Get current location"),
             ),
             TextButton.icon(
               onPressed: () {},
               icon: const Icon(Icons.map),
-              label: const Text("Pick a location from map"),
+              label: const Text(
+                "Pick from  map",
+              ),
             ),
           ],
         )
