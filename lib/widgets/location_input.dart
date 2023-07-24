@@ -24,7 +24,6 @@ double? lat;
 bool showMap = false;
 
 class _LocationInputState extends State<LocationInput> {
-
   void getCurrentLocation() async {
     Location location = Location();
 
@@ -70,7 +69,6 @@ class _LocationInputState extends State<LocationInput> {
     final cityName = data["city"];
     final continent = data["continent"];
     final countryName = data["countryName"];
-  
 
     pickedLocation = PlaceAddrees(
         city: cityName,
@@ -78,7 +76,9 @@ class _LocationInputState extends State<LocationInput> {
         countryName: countryName,
         lat: lat!,
         long: long!,
-      );
+        // imageUrl:
+        //     ' https://ojw.dev.openstreetmap.org/StaticMap/?lat=$lat&lon=$long&z=11&layer=cloudmade_2&mode=Location'
+        );
 
     widget.onSelectedFullAddrees(pickedLocation!);
     log(pickedLocation!.city);

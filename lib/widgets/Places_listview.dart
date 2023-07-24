@@ -61,7 +61,7 @@ class PlacesList extends StatelessWidget {
                       ));
                 },
                 title: Text(
-                  places[index].name,
+                  places[index].title,
                   style: Theme.of(context).textTheme.titleLarge!.copyWith(
                       color: Theme.of(context).colorScheme.onBackground),
                 ),

@@ -20,13 +20,13 @@ class NewPlace extends ConsumerStatefulWidget {
 late String enteredPlace;
 
 bool isSaving = false;
-final TextEditingController controller = TextEditingController();
+// final TextEditingController controller = TextEditingController();
 
 class _NewPlaceState extends ConsumerState<NewPlace> {
   @override
   void dispose() {
     super.dispose();
-    controller.dispose();
+    // controller.dispose();
   }
 
   File? _selectedImage;
@@ -44,10 +44,10 @@ class _NewPlaceState extends ConsumerState<NewPlace> {
         });
 
         ref.read(favoriateProvider.notifier).addPlace(Place(
-            name: enteredPlace,
+            title: enteredPlace,
             image: _selectedImage!,
             placeAddrees: _fullPlaceAddrees!));
-        await Future.delayed(const Duration(milliseconds: 700), () {
+        await Future.delayed(const Duration(milliseconds: 300), () {
           setState(() {
             isSaving = false;
           });
@@ -76,7 +76,7 @@ class _NewPlaceState extends ConsumerState<NewPlace> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 TextFormField(
-                  controller: controller,
+                  // controller: controller,
                   style: Theme.of(context).textTheme.titleMedium,
                   maxLength: 30,
                   onSaved: (value) {
@@ -150,7 +150,7 @@ class _NewPlaceState extends ConsumerState<NewPlace> {
                     !isSaving
                         ? ElevatedButton(
                             onPressed: () {
-                              controller.clear();
+                              // controller.clear();
                               setState(() {
                                 _selectedImage = null;
                               });
